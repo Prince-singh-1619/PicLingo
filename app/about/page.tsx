@@ -7,7 +7,7 @@ export default function AboutPage() {
   return (
     <div className="container py-12 md:py-24">
       <div className="flex flex-col items-center space-y-6 text-center">
-        <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">About CaptionAI</h1>
+        <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">About PicLingo</h1>
         <p className="max-w-[800px] text-muted-foreground md:text-xl">
           Our AI-powered image caption recommendation system helps content creators, marketers, and social media
           enthusiasts create engaging captions for their images.
@@ -75,7 +75,7 @@ export default function AboutPage() {
           <div className="absolute inset-0 rounded-lg bg-gradient-to-br from-primary/10 to-purple-500/10 blur-2xl"></div>
           <Image
             src="https://images.unsplash.com/photo-1633265486064-086b219458ec?auto=format&fit=crop&q=80&w=600&h=700"
-            alt="About CaptionAI"
+            alt="About PicLingo"
             fill
             className="object-cover rounded-lg relative z-10"
             priority
