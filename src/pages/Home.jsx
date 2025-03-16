@@ -28,12 +28,12 @@ const Home = () => {
   return (
     <section className='h-full w-full'>
         {/* hero section */}
-        <section className='h-[80vh] flex items-center max-md:justify-center px-12 gap-12 my-24'>
+        <section className='min-h-[80vh] flex max-md:flex-col-reverse items-center max-md:justify-center px-12 gap-12 max-md:gap-4 my-24 max-md:my-12'>
           <div className='p-12 '>
-            <div className='flex flex-col justify-center gap-4'>
-              <p className='text-6xl font-bold font-stretch-expanded text-[clamp(2rem,5vw,4rem)]'>AI-Powered Image Caption Recommendations</p>
-              <p className='text-slate-300 text-xl text-[clamp(1rem,2vw,1.5rem)]'>Upload your images and get intelligent, contextually relevant caption suggestions powered by advanced AI.</p>
-              <div className='flex gap-2 max-sm:flex-col max-sm:mx-auto'>
+            <div className='flex flex-col justify-center gap-4 max-md:gap-8'>
+              <p className='text-6xl font-bold font-stretch-expanded text-[clamp(2rem,5vw,4rem)] max-md:text-center'>AI-Powered Image Caption Recommendations</p>
+              <p className='text-slate-300 text-xl text-[clamp(1rem,2vw,1.5rem)] max-md:text-center'>Upload your images and get intelligent, contextually relevant caption suggestions powered by advanced AI.</p>
+              <div className='flex gap-2 max-sm:flex-col max-md:mx-auto'>
                 <Link to='/upload' className='btn flex items-center gap-2 text-white/87'>
                   <i className='text-white/87'><FiUpload/></i> 
                   <span className='text-white/87'>Upload Image</span> 
@@ -45,8 +45,8 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div className='p-12 max-md:hidden'>
-            <img src={heroImg} alt='' height='1240px' width='1240px' className='rounded-lg'/>
+          <div className='p-12 max-sm:min-w-[360px]'>
+            <img src={heroImg} alt='' className='max-lg:max-h-[1240px] max-lg:w-[1240px] rounded-lg'/>
           </div>
         </section>
 
