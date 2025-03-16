@@ -1,4 +1,7 @@
-# React + Vite
+# About
+PicLingo is an AI-powered image caption recommendation system using CLIP for image and text understanding. It extracts feature vectors, computes cosine similarity, and ranks the most relevant captions. Ideal for content recommendation, image search, and automated tagging, PicLingo ensures efficient and accurate image-caption matching.
+
+## React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
