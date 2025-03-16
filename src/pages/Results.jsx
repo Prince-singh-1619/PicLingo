@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { BiDislike, BiLike } from 'react-icons/bi'
 import { FaCheck } from 'react-icons/fa'
 import { LuCopy } from 'react-icons/lu'
-import { useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 const Results = () => {
   const location = useLocation()
@@ -93,11 +93,11 @@ const Results = () => {
         </div>
       </section>
 
-      <div className='btn w-[25%] max-lg:w-[50%] min-w-[240px] text-center'>Upload Another Image</div>
+      <Link to='/upload' className='btn w-[25%] max-lg:w-[50%] min-w-[240px] text-center '>
+        <div className='text-white/87'>Upload Another Image</div>
+      </Link>
     </section>
   )
 }
 
 export default Results
-
-
