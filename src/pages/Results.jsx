@@ -49,14 +49,14 @@ const Results = () => {
   return (
     <section className='w-full flex flex-col jutify-center gap-2 items-center py-15'>
       <p className='text-5xl max-sm:text-3xl font-bold text-center'>Caption Recommendations</p>
-      <p className='text-xl max-sm:text-sm text-slate-300 mt-2 text-center max-sm:w-[80%]'>Here are AI-generated caption suggestions for your image.</p>
+      <p className='text-xl max-sm:text-sm text-slate-700 dark:text-slate-300 mt-2 text-center max-sm:w-[80%]'>Here are AI-generated caption suggestions for your image.</p>
 
       <section className='h-full py-10'>
         <div className='h-full w-[55vw] max-lg:w-[80vw] max-md:w-[100vw] flex justify-around gap-8 max-lg:flex-col max-lg:items-center'>
           {/* image part */}
           <div className='h-full w-[38%] max-lg:w-[90%] border border-slate-700 rounded-lg'>
             <div className='p-2'>
-              <img src={image} alt='image' className='rounded-lg'/>
+              <img src={image} alt='image' className='mx-auto rounded-lg'/>
             </div>
           </div>
 
@@ -69,15 +69,16 @@ const Results = () => {
                   capArray.map((data, index)=>{
                     return(
                       <div key={index} className='border border-slate-700 rounded-lg p-4 flex flex-col gap-4'>
-                        <p className='text-slate-300' value={data.title}>{data.title}</p>
+                        <p className='text-slate-700 dark:text-slate-300' value={data.title}>{data.title}</p>
                         <div className='flex justify-between max-sm:flex-row-reverse'>
                           <div className='flex gap-6 max-sm:hidden'>
-                            <i className='h-10 w-10 border border-slate-700 flex justify-center items-center text-lg rounded-lg hover:bg-gray-700 cursor-pointer transition-all'><BiLike/></i>
-                            <i className='h-10 w-10 border border-slate-700 flex justify-center items-center text-lg rounded-lg hover:bg-gray-700 cursor-pointer transition-all'><BiDislike/></i>
+                            <i className='h-10 w-10 border border-slate-700 hover:text-white flex justify-center items-center text-lg rounded-lg hover:dark:bg-gray-700 cursor-pointer transition-all'><BiLike/></i>
+                            <i className='h-10 w-10 border border-slate-700 hover:text-white flex justify-center items-center text-lg rounded-lg hover:dark:bg-gray-700 cursor-pointer transition-all'><BiDislike/></i>
                           </div>
-                          <div className='flex gap-2 items-center border border-slate-700 px-4 rounded-lg hover:bg-gray-700 cursor-pointer transition-all max-sm:h-12'>
+                          <div className='flex gap-2 items-center btn btn-copy hover:bg-white '>
+                          {/* <div className='flex gap-2 items-center border border-slate-700 px-4 rounded-lg hover:bg-gray-700 cursor-pointer transition-all max-sm:h-12'> */}
                             <i id='copy-icon'>{copiedIndex===index ? (<FaCheck/>) : (<LuCopy/>)}</i>
-                            <p id='copy-text' className='text-slate-300' onClick={()=>copyText(data.title, index)}>{copiedIndex===index ? ('Copied') : ('Copy')}</p>
+                            <p id='copy-text' className='text-slate-700 dark:text-slate-300 ' onClick={()=>copyText(data.title, index)}>{copiedIndex===index ? ('Copied') : ('Copy')}</p>
                           </div>
                         </div>
                       </div> 
@@ -94,7 +95,7 @@ const Results = () => {
       </section>
 
       <Link to='/upload' className='btn w-[25%] max-lg:w-[50%] min-w-[240px] text-center '>
-        <div className='text-white/87'>Upload Another Image</div>
+        <div className='text-gray-900 dark:text-white/87'>Upload Another Image</div>
       </Link>
     </section>
   )
