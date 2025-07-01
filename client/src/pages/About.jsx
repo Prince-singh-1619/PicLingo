@@ -7,6 +7,8 @@ import { FaEnvelopeOpenText } from 'react-icons/fa'
 import { SlPeople } from 'react-icons/sl'
 import { Link } from 'react-router-dom'
 import TypewriterText from '../animations/TypewriterText'
+import Team from "../components/Team";
+
 
 const About = () => {
   const worksArray = [
@@ -111,6 +113,15 @@ const About = () => {
           <p className=' text-gray-900 dark:text-white/87 '>Get Started</p>
         </Link>
       </section>
+
+
+      <div className="...">
+        {/* existing About page content */ }
+    
+        {/* 👇 Add Team section at bottom */}
+      <Team />
+      </div>
+
     </section>
   )
 }
