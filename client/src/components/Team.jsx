@@ -23,16 +23,16 @@ const developers = [
 
 const Team = () => {
   return (
-<section className="bg-black text-white py-20 px-6">
-      <h2 className="text-4xl font-bold text-center mb-16 tracking-wide">
-        About the <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500">Developers</span>
+<section className=" text-white py-20 px-6">
+      <h2 className="text-5xl font-bold text-center mb-16 tracking-wide">
+        About the <span className="text-transparent bg-clip-text bg-gradient-to-r text-gradient">Developers</span>
       </h2>
 
-      <div className="grid gap-12 md:grid-cols-3 max-w-7xl mx-auto">
+      <div className="grid gap-12 md:grid-cols-3 max-w-[90%] mx-auto">
         {developers.map((dev, index) => (
           <div
             key={index}
-            className="relative group bg-gradient-to-br from-[#1e293b] to-[#0f172a] p-8 rounded-2xl border border-gray-800 shadow-lg transition-all duration-300 hover:border-blue-400 hover:shadow-xl hover:-translate-y-2"
+            className="relative group bg-gradient-to-br  bg-slate-300 dark:bg-[#202020] p-8 rounded-2xl border border-gray-800 shadow-lg transition-all duration-300 hover:border-blue-400 hover:shadow-xl hover:-translate-y-2"
           >
             <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-blue-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
@@ -44,13 +44,13 @@ const Team = () => {
               />
             </div>
 
-            <h3 className="text-2xl font-bold text-white text-center mb-2 relative z-10 group-hover:text-blue-300 transition-colors">
+            <h3 className="text-2xl font-bold text-slate-700 dark:text-slate-300 text-center mb-2 relative z-10 group-hover:text-blue-300 transition-colors">
               {dev.name}
             </h3>
-            <p className="text-base text-gray-400 font-medium italic text-center mb-4 relative z-10 group-hover:text-purple-300 transition-colors">
+            <p className="text-base text-slate-700 dark:text-slate-300 opacity-65 font-medium italic text-center mb-4 relative z-10 group-hover:text-purple-300 transition-colors">
               {dev.role}
             </p>
-            <p className="text-gray-300 text-[1rem] leading-relaxed text-center relative z-10 group-hover:text-white transition-colors">
+            <p className="text-slate-700 dark:text-slate-300 text-[1rem] leading-relaxed text-center relative z-10 group-hover:text-white transition-colors">
               {dev.desc}
             </p>
           </div>
