@@ -5,6 +5,7 @@ import Header from './components/Header';
 import { ToastContainer, toast } from 'react-toastify';
 import Home from './pages/Home';
 import About from './pages/About';
+import Team from "./components/Team";
 import Upload from './pages/Upload';
 import Results from './pages/Results';
 import SignUp from './pages/SignUp';
@@ -79,6 +80,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/upload" element={<Upload />} />
             <Route path="/about" element={<About />} />
+            <Route path="/team" element={<Team />} />
             <Route path="/results" element={<Results />} />
             <Route path="/most-liked-captions" element={<MostLikedCaptions />} />
             <Route path="/my-profile" element={<MyProfile user={userDetails}/>} />

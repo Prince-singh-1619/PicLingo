@@ -66,6 +66,7 @@ const Header = ({dp}) => {
           <Link to='/'><span className='text-gray-900 dark:text-white/87'>Home</span></Link>
           <Link to='/upload'><span className='text-gray-900 dark:text-white/87'>Upload</span></Link>
           <Link to='/about'><span className='text-gray-900 dark:text-white/87'>About</span></Link>
+
         </div>
         <div className='flex items-center gap-8 max-[360px]:gap-2'>
           <ThemeToggle/>
