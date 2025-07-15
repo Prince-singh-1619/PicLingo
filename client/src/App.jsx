@@ -37,7 +37,7 @@ function App() {
 
   return (
     <Router>
-      <ToastContainer hideProgressBar={true} transition={Slide} />
+      <ToastContainer hideProgressBar={true} transition={Slide} autoClose={3000} toastClassName="!max-w-[80vw] text-sm md:text-base break-words" bodyClassName="flex items-center" />
 
       <Header/>
       <div className="min-h-screen pt-16 overflow-x-hidden relative flex flex-col scroll-smooth">
@@ -47,7 +47,7 @@ function App() {
         {/* <div className="fixed top-0 left-0 w-full h-full -z-10 invert bg-cover bg-center bg-no-repeat bg-fixed dark:hidden" style={{ backgroundImage: `url(${darkBgImg})` }} /> */}
 
         {/* Background image for dark mode */}
-        <div className="fixed top-0 left-0 w-full h-full -z-10 blur-[2px] bg-cover bg-center bg-no-repeat bg-fixed hidden dark:block" style={{ backgroundImage: `url(${darkBgImg})` }} />
+        {/* <div className="fixed top-0 left-0 w-full h-full -z-10 blur-[2px] bg-cover bg-center bg-no-repeat bg-fixed hidden dark:block" style={{ backgroundImage: `url(${darkBgImg})` }} /> */}
 
         <div className="flex-grow bg-transparent">
           <Routes>

@@ -113,18 +113,17 @@ const GoogleLogin = () => {
 
     return (
         <div className='w-full'>
-            {/* Google button container */}
+            {/* Google button container with theme-aware styling */}
             <div 
                 ref={googleBtnRef} 
-                className='w-full'
-                // style={{ minHeight: '40px' }}
+                className='w-full rounded-lg bg-[#94A3B8] dark:bg-[#322f2f] py-1 flex justify-center items-center transition-colors duration-200' 
             />
             
             {/* Fallback button if Google SDK fails to load or render */}
             {!isGoogleSDKReady && (
                 <div 
-                    className='btn w-full flex gap-2 items-center justify-center text-lg'
-                    onClick={handleManualGoogleLogin}
+                    className='btn w-full flex gap-2 items-center justify-center text-lg rounded-md border border-slate-300 dark:border-slate-700 bg-white dark:bg-[#18181b] text-slate-800 dark:text-slate-100 hover:bg-slate-100 hover:dark:bg-[#23232b] transition-colors duration-200 py-2 cursor-pointer mt-2' 
+                    onClick={handleManualGoogleLogin} 
                 >
                     <i className='text-xl'><FcGoogle/></i>
                     <span>Continue with Google</span>

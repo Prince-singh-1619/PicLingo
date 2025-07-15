@@ -14,6 +14,7 @@ const MyProfile = () => {
   const [loading, setLoading] = useState(false)
   const [showUpdateBox, setShowUpdateBox] = useState(false)
   const [capArray, setCapArray] = useState([])
+  const [fullCapArray, setFullCapArray] = useState([])
 
   //user 
   const authToken = localStorage.getItem("authToken");
@@ -56,6 +57,7 @@ const MyProfile = () => {
       if(responseData.success){
         const extractFive = responseData.data.slice(0, 5); 
         setCapArray(extractFive);
+        setFullCapArray(responseData.data)
         console.log('responseData',responseData.message)
         console.log('array',capArray)
       }
@@ -71,6 +73,10 @@ const MyProfile = () => {
   useEffect(()=>{
     fetchCaptions()
   }, [])
+
+  const handleUserCaps = () =>{
+    navigate('/user-liked-captions', { state: { captions: fullCapArray } });
+  }
 
   return (
     <section className='px-8 flex flex-col gap-4 max-md:mt-24'>
@@ -88,7 +94,7 @@ const MyProfile = () => {
         <section className='max-md:mt-12'>
           <div className='flex justify-between px-2'>
             <p className='pt-4 text-2xl font-bold'>Liked Captions</p>
-            <Link to={'/user-liked-captions'} className='btn '>View all</Link>
+            <div onClick={handleUserCaps} className='btn '>View all</div>
           </div>
           <div>
             <div className='flex max-md:flex-col gap-4 mt-4'>
@@ -106,7 +112,7 @@ const MyProfile = () => {
                     )
                   })
                 ) : (
-                  <div>No data found</div>
+                  <div className='opacity-75'>No Caption found. Try liking some of them.</div>
                 ) 
               }
             </div>

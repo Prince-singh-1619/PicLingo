@@ -81,21 +81,9 @@ const Login = () => {
                 <div className='w-[90%] flex flex-col gap-4'>
                     <p className='text-5xl max-sm:text-3xl font-bold text-center'>Login</p>
                     <span className='w-full text-xl max-sm:text-sm text-slate-700 dark:text-slate-300 -mt-2 mb-6 text-center tracking-[0.5rem]'>to get started</span>
-                    
-                    {/* <div className='h-28 w-28 rounded-full mx-auto flex justify-center items-center object-contain border-[1px] border-slate-400 dark:border-[#413c3c] overflow-hidden relative'>
-                        <img src={data.profilePic || defaultUser} alt='user profile' className='h-full w-full rounded-full'/>
-                        <input id='upload-pic' type='file' name='profilePic' accept="image/*" className='hidden' onChange={handleUploadPic}/>
-                        <label htmlFor='upload-pic' className='absolute w-full bg-opacity-80 text-center bottom-0 '>
-                            <span className='w-full bg-slate-300 dark:bg-[#322f2f] text-black dark:text-[#dadada] bg-opacity-100 z-10 p-1 rounded'>{data.profilePic==="" ? ("Upload") : ("Change")}</span>
-                        </label>
-                    </div> */}
 
                     <form onSubmit={handleSubmit} className='flex flex-col gap-4'>
-                        {/* <div className='flex gap-4'>
-                            <input placeholder='First name' name='firstName' required className='input-field' value={data.firstName} onChange={handleOnChange}/>
-                            <input placeholder='Last name' name='lastName' required className='input-field' value={data.lastName} onChange={handleOnChange} />
-                        </div> */}
-                        <input placeholder='Email' type='email' name='email' required className='input-field' value={data.email} onChange={handleOnChange} />
+                        <input placeholder='Email' type='email' name='email' required className='input-field' value={data.email.toLowerCase()} onChange={handleOnChange} />
                         <label htmlFor="password" className=' flex justify-between items-center relative'>
                             <input id='password' placeholder='password' name='password' required value={data.password} onChange={handleOnChange} type={showPassword ? "text" : "password"} className='input-field outline-none border-0 ' />
                             <i onClick={() => setShowPassword((prev) => !prev)} className='cursor-pointer absolute right-4'> {showPassword ? (<FaEyeSlash />) : (<FaEye />)}

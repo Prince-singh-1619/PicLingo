@@ -21,6 +21,9 @@ const Upload = () => {
   const [mood, setMood] = useState("Happy")
   const navigate = useNavigate();
 
+  const user = JSON.parse(localStorage.getItem("userData"));
+  const authToken = localStorage.getItem("authToken");
+
   console.log(mood)
   
 
@@ -71,9 +74,6 @@ const Upload = () => {
     // Update upload count if user is logged in
     try {
       if (isLoggedIn()) {
-        const user = JSON.parse(localStorage.getItem("userData"));
-        const authToken = localStorage.getItem("authToken");
-        
         const response = await fetch(SummaryApi.updateUploadCount.url, {
           method: SummaryApi.updateUploadCount.method,
           headers: {
@@ -96,6 +96,22 @@ const Upload = () => {
     }
 
     navigate('/results', {state: {image: imageArray, dominantColor:dominantColor, invertedColor:invertedColor}})
+    
+    //update user in localStorage
+    if(user && user.statistics){
+      const updatedUserData = {
+        ...user,
+        statistics: {
+          ...user.statistics,
+          uploadCount: (user?.statistics.uploadCount || 0) + 1,
+          captionGenerated: (user?.statistics.captionGenerated || 0) + 5
+        }
+      };
+
+      localStorage.setItem('userData', JSON.stringify(updatedUserData));
+      console.log('User stats updated:', updatedUserData);
+    }
+    
     setLoading(false)
   }
   

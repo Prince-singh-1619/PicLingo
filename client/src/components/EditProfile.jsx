@@ -19,6 +19,7 @@ const EditProfile = ( {open, onClose} ) => {
   const navigate = useNavigate()
   
   const user = JSON.parse(localStorage.getItem("userData"))
+  const token = localStorage.getItem("authToken")
   const [editData, setEditData] = useState({
     userId: user?._id,
     firstName: user?.firstName || "",
@@ -59,13 +60,11 @@ const EditProfile = ( {open, onClose} ) => {
     const facebookRegex = /^https:\/\/(www\.)?facebook\.com\/[A-Za-z0-9.]+\/?$/;
     return facebookRegex.test(url);
   };
-
   const validateInstagramUrl = (url) => {
     if (!url) return true; // Empty is valid
     const instagramRegex = /^https:\/\/(www\.)?instagram\.com\/[A-Za-z0-9_.]+\/?$/;
     return instagramRegex.test(url);
   };
-
   const validateTwitterUrl = (url) => {
     if (!url) return true; // Empty is valid
     const twitterRegex = /^https:\/\/(www\.)?twitter\.com\/[A-Za-z0-9_]{1,15}\/?$/;
@@ -148,8 +147,6 @@ const EditProfile = ( {open, onClose} ) => {
     };
 
     try {
-      const token = localStorage.getItem("authToken")
-
       const response = await fetch(SummaryApi.updateProfile.url, {
         method: SummaryApi.updateProfile.method,
         headers: {

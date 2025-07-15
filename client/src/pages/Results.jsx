@@ -64,27 +64,41 @@ const Results = () => {
       if (!capSaved.includes(index)) {
         const success = await saveCaption(event, index);
         if(success){
-            setCapSaved(prev => [...prev, index]);
-            
-            // Increment totalLikes in user statistics
-            try {
-                const response = await fetch(SummaryApi.incrementTotalLikes.url, {
-                    method: SummaryApi.incrementTotalLikes.method,
-                    headers: {
-                        'Authorization': `Bearer ${authToken}`,
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ userId: userId })
-                });
-                const responseData = await response.json();
-                if (responseData.success) {
-                    console.log('Total likes incremented successfully');
-                } else {
-                    console.log('Failed to increment total likes:', responseData.message);
-                }
-            } catch (error) {
-                console.error('Error incrementing total likes:', error);
-            }
+          setCapSaved(prev => [...prev, index]);
+          
+          // Increment totalLikes in user statistics
+          try {
+              const response = await fetch(SummaryApi.incrementTotalLikes.url, {
+                method: SummaryApi.incrementTotalLikes.method,
+                headers: {
+                    'Authorization': `Bearer ${authToken}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ userId: userId })
+              });
+              const responseData = await response.json();
+              if (responseData.success) {
+                  console.log('Total likes incremented successfully');
+              } else {
+                  console.log('Failed to increment total likes:', responseData.message);
+              }
+          } catch (error) {
+              console.error('Error incrementing total likes:', error);
+          }
+
+          //update user in localStorage
+          if(user && user.statistics){
+            const updatedUserData = {
+              ...user,
+              statistics: {
+                ...user.statistics,
+                totalLikes: (user?.statistics.totalLikes || 0) + 1,
+              }
+            };
+            localStorage.setItem('userData', JSON.stringify(updatedUserData));
+            console.log('User stats updated:', updatedUserData);
+          }
+
         }
       }
     }
@@ -208,6 +222,19 @@ const Results = () => {
       } 
       catch (error) {
         console.error('Error incrementing captions generated:', error);
+      }
+
+      //update user in localStorage
+      if(user && user.statistics){
+        const updatedUserData = {
+          ...user,
+          statistics: {
+            ...user.statistics,
+            captionGenerated: (user?.statistics.captionGenerated || 0) + 5,
+          }
+        };
+        localStorage.setItem('userData', JSON.stringify(updatedUserData));
+        console.log('User stats updated:', updatedUserData);
       }
     }
 

@@ -10,7 +10,7 @@ import isLoggedIn from '../helpers/isLoggedIn'
 import TypewriterText from '../animations/TypewriterText'
 import {motion} from 'motion/react'
 import AnimateNumber from '../animations/AnimateNumber';
-import { useSearchParams, useNavigate } from 'react-router-dom'
+import { useSearchParams, useNavigate, useLocation } from 'react-router-dom'
 import Select from 'react-select';
 import useTheme from '../hooks/useTheme';
 import { MdDelete } from 'react-icons/md';
@@ -32,6 +32,13 @@ const UserLikedCaptions = () => {
 
     const [searchParams, setSearchParams] = useSearchParams();
     const navigate = useNavigate();
+    const location = useLocation();
+
+    //receiving captions from my-profile page
+    useEffect(() => {
+        const captions = location.state?.captions || [];
+        setCapArray(captions);
+    }, [location.state?.captions]);
 
     // Extract all unique tags from capArray
     const allTags = Array.from(new Set(capArray.flatMap(item => item.tags)));
@@ -63,36 +70,6 @@ const UserLikedCaptions = () => {
     const updatePageInUrl = (newPage) => {
         setSearchParams({ page: newPage.toString() });
     };
-
-    const fetchCaptions = async() =>{
-        setLoading(true)
-        try {
-        const response = await fetch(`${SummaryApi.userLikedCaptions.url}?userId=${userId}`, {
-            method:SummaryApi.userLikedCaptions.method,
-            headers: {
-            'Authorization': `Bearer ${authToken}`,
-            },
-        })
-        const responseData = await response.json()
-        if(responseData.success){
-            const extractFive = responseData.data.slice(0, 5); 
-            setCapArray(extractFive);
-            console.log('responseData',responseData.message)
-            console.log('array',capArray)
-        }
-        } 
-        catch (error) {
-            console.log("Error fetching liked captions", error)
-        }
-        finally{
-            setLoading(false)
-        }
-    }
-
-    useEffect(()=>{
-        fetchCaptions()
-    }, [])
-
 
     // Validate page number after data is loaded
     useEffect(() => {

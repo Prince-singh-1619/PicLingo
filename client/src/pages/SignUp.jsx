@@ -135,7 +135,7 @@ const SignUp = () => {
                             <input placeholder='First name' name='firstName' required className='input-field' value={data.firstName} onChange={handleOnChange}/>
                             <input placeholder='Last name' name='lastName' required className='input-field' value={data.lastName} onChange={handleOnChange} />
                         </div>
-                        <input placeholder='Email' type='email' name='email' required className='input-field' value={data.email} onChange={handleOnChange} />
+                        <input placeholder='Email' type='email' name='email' required className='input-field' value={data.email.toLowerCase()} onChange={handleOnChange} />
                         <label htmlFor="password" className=' flex justify-between items-center relative'>
                             <input id='password' placeholder='password' name='password' required value={data.password} onChange={handleOnChange} type={showPassword ? "text" : "password"} className='input-field outline-none border-0 ' />
                             <i onClick={() => setShowPassword((prev) => !prev)} className='cursor-pointer absolute right-4'> {showPassword ? (<FaEyeSlash />) : (<FaEye />)}

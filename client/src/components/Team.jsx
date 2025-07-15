@@ -28,7 +28,7 @@ const Team = () => {
   return (
     <section className="py-20 px-6 dark:bg-[#333333] bg-slate-100">
         <h2 className="text-5xl  font-bold text-center mb-16 tracking-wide">
-            About the <span className="text-transparent bg-clip-text bg-gradient-to-r text-gradient">Developers</span>
+            Meet the <span className="text-transparent bg-clip-text bg-gradient-to-r text-gradient">Developers</span>
         </h2>
 
         <div className="grid gap-12 md:grid-cols-3 max-w-[90%] mx-auto">

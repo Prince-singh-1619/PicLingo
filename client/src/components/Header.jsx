@@ -8,6 +8,7 @@ import {toast} from 'react-toastify'
 import userImg from '../assets/user.png'
 import { TbMenuDeep } from "react-icons/tb";
 import {motion} from 'motion/react'
+import { RiContactsLine } from "react-icons/ri";
 
 const Header = () => {
   // const token = localStorage.getItem("authToken")
@@ -71,7 +72,7 @@ const Header = () => {
         </div>
         <div className='flex items-center gap-6 max-[360px]:gap-2'>
           <ThemeToggle/>
-          <Link to='/upload' className='btn-2 bg-[#1a1a1a] flex items-center gap-2 text-gray-900 dark:text-white/87 max-sm:hidden'>
+          <Link to='/upload' className='btn bg-[#1a1a1a] flex items-center gap-2 text-gray-900 dark:text-white/87 max-sm:hidden'>
             <i className='text-gray-900 dark:text-white/87'><FiUpload/></i>
             <span className=' text-gray-900 dark:text-white/87 inline-block'>Upload</span>
           </Link>
@@ -86,12 +87,12 @@ const Header = () => {
                       animate={{y:0}} 
                       transition={{duration:0.3,}}
                       style={{zIndex:0}}
-                    className='btn-2 absolute -ml-10 max-md:-ml-18 mt-2 before:absolute before:-top-2 before:left-1/2 max-md:before:left-[75%] before:-translate-x-1/2 before:w-5 before:h-5 before:bg-[#94A3B8] dark:before:bg-[#1c1c1c] before:rotate-45 before:clip-path-[polygon(50%_0%,0%_100%,100%_100%)] flex flex-col items-center gap-2'>
+                    className='btn absolute -ml-10 max-md:-ml-18 mt-2 before:absolute before:-top-2 before:left-1/2 max-md:before:left-[75%] before:-translate-x-1/2 before:w-5 before:h-5 before:bg-[#94A3B8] dark:before:bg-[#322f2f] before:rotate-45 before:clip-path-[polygon(50%_0%,0%_100%,100%_100%)] flex flex-col items-center gap-2'>
                       <Link to={'/upload'} className='w-full text-center hidden max-md:block hover:bg-[#E2E8F0] dark:hover:bg-[#5c5c5c] transition-colors cursor-pointer'>Upload</Link>
                       <div className="h-[1px] w-full hidden max-md:block bg-gray-300 dark:bg-gray-600 mx-2"></div>
                       <Link to={'/about'} className='w-full text-center hidden max-md:block hover:bg-[#E2E8F0] dark:hover:bg-[#5c5c5c] transition-colors cursor-pointer'>About</Link>
                       <div className="h-[1px] w-full hidden max-md:block bg-gray-300 dark:bg-gray-600 mx-2"></div>
-                      <Link to={'/contact-us'} className='w-full min-w-20 text-center hover:bg-[#E2E8F0] dark:hover:bg-[#5c5c5c] transition-colors cursor-pointer'>Contact Us</Link>
+                      <Link to={'/contact-us'} className='w-full flex gap-2 min-w-20 text-center hover:bg-[#E2E8F0] dark:hover:bg-[#5c5c5c] transition-colors cursor-pointer'>Contact Us</Link>
                       <div className="h-[1px] w-full bg-gray-300 dark:bg-gray-600 mx-2"></div>
                       <Link to={'my-profile'} className='w-full text-center hover:bg-[#E2E8F0] dark:hover:bg-[#5c5c5c] transition-colors cursor-pointer'>My profile</Link>
                       <div className="h-[1px] w-full bg-gray-300 dark:bg-gray-600 mx-2"></div>
@@ -101,7 +102,7 @@ const Header = () => {
                 </div>
               ) : (
                 <Link to='/login'>
-                  <span className='btn-2 inline-block max-[425px]:hidden text-gray-900 dark:text-white/87'>Login</span>
+                  <span className='btn inline-block max-[425px]:hidden text-gray-900 dark:text-white/87'>Login</span>
                 </Link>
               ) 
             }

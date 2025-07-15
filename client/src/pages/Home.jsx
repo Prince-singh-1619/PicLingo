@@ -1,7 +1,8 @@
 import React from 'react'
 import { FiUpload } from 'react-icons/fi'
 import { GoArrowRight } from 'react-icons/go'
-import heroImg from '../assets/text art.jpg'
+// import heroImg from '../assets/text art.jpg'
+import heroImg from '../assets/hero image.png'
 import { GiSparkles } from 'react-icons/gi'
 import { LuLetterText } from 'react-icons/lu'
 import { Link } from 'react-router-dom';
@@ -52,8 +53,8 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <InteractiveCard className='max-sm:min-w-[360px] max-lg:min-w-[50%] max-md:hidden'>
-            <img src={heroImg} alt='' className='max-lg:max-h-[1240px] max-lg:w-[1240px] rounded-lg '/>
+          <InteractiveCard className='max-sm:min-w-[360px] max-lg:min-w-[50%] scale-85 max-md:hidden'>
+            <img src={heroImg} alt='' className='max-lg:max-h-[1080px] max-lg:w-[1080px] rounded-lg '/>
           </InteractiveCard>
         </section>
 

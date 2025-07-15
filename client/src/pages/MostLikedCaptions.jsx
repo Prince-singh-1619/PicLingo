@@ -63,22 +63,22 @@ const MostLikedCaptions = () => {
     };
 
     const fetchCaptions = async() =>{
-      setLoading(true)
-      const response = await fetch(SummaryApi.getAllCaptions.url, {
-          method:SummaryApi.getAllCaptions.method,
-          headers: {
-            'Authorization': `Bearer ${authToken}`,
-            'Content-Type': 'application/json'
-          },
-      })
-      const responseData = await response.json()
-      if(responseData.success){
-          setCapArray(responseData.data)
-          // setCapArray(array)
-          console.log('responseData',responseData.message)
-          console.log('array',capArray)
-      }
-      setLoading(false)
+        setLoading(true)
+        const response = await fetch(SummaryApi.getAllCaptions.url, {
+            method:SummaryApi.getAllCaptions.method,
+            headers: {
+                'Authorization': `Bearer ${authToken}`,
+                'Content-Type': 'application/json'
+            },
+        })
+        const responseData = await response.json()
+        if(responseData.success){
+            setCapArray(responseData.data)
+            // setCapArray(array)
+            console.log('responseData',responseData.message)
+            console.log('array',capArray)
+        }
+        setLoading(false)
     }
 
     useEffect(()=>{
@@ -167,6 +167,19 @@ const MostLikedCaptions = () => {
                         }
                     } catch (error) {
                         console.error('Error incrementing total likes:', error);
+                    }
+
+                    //update user in localStorage
+                    if(user && user.statistics){
+                        const updatedUserData = {
+                            ...user,
+                            statistics: {
+                                ...user.statistics,
+                                totalLikes: (user?.statistics.totalLikes || 0) + 1,
+                            }
+                        };
+                        localStorage.setItem('userData', JSON.stringify(updatedUserData));
+                        console.log('User stats updated:', updatedUserData);
                     }
                 }
             }
