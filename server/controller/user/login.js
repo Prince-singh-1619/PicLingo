@@ -11,6 +11,14 @@ async function loginController(req, res){
         const user = await userModel.findOne({email})
         if(!user) throw new Error("User does not exist")
 
+        if(user.password==='google-auth-user'){
+            return res.status(400).json({
+                message: "You signed up with Google. Please log in using Google Sign-In.",
+                error: true,
+                success: false
+            })
+        }
+
         const checkPassword = await bcrypt.compare(password, user.password)
         if(!checkPassword) throw new Error("Incorrect password, please try again")
 

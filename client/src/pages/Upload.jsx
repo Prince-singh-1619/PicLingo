@@ -3,7 +3,7 @@ import { FiUpload } from 'react-icons/fi'
 import { IoMdCloseCircleOutline } from 'react-icons/io'
 import { LuImage } from 'react-icons/lu'
 import { Link, useNavigate } from 'react-router-dom'
-import GenerateCaptions from '../components/GenerateCaptions'
+import GenerateCaptions from '../helpers/GenerateCaptions'
 import imageTobase64 from '../helpers/imageTobase64'
 import TypewriterText from '../animations/TypewriterText'
 import ColorExtractor from '../components/ColorExtractor'
@@ -18,13 +18,14 @@ const Upload = () => {
   const [imageArray, setImageArray] = useState([])
   const [dominantColor, setDominantColor] = useState(null)
   const [invertedColor, setInvertedColor] = useState(null)
-  const [mood, setMood] = useState("Happy")
+  const [capArray, setCapArray] = useState([])
+  // const [mood, setMood] = useState("Happy")
   const navigate = useNavigate();
 
   const user = JSON.parse(localStorage.getItem("userData"));
   const authToken = localStorage.getItem("authToken");
 
-  console.log(mood)
+  // console.log(mood)
   
 
   const handleChange = async(e) =>{
@@ -68,8 +69,11 @@ const Upload = () => {
 
   const genCaps = async() =>{
     setLoading(true)
-    // const captions = await GenerateCaptions(imageArray)
-    // const captions = await GenerateCaptions(imageArray, mood)
+    
+    const captions = await GenerateCaptions()
+    console.log("captions received: ", captions)
+    setCapArray(captions)
+
 
     // Update upload count if user is logged in
     try {
@@ -95,7 +99,15 @@ const Upload = () => {
       console.error('Error updating upload count:', error);
     }
 
-    navigate('/results', {state: {image: imageArray, dominantColor:dominantColor, invertedColor:invertedColor}})
+    // passing data to results page
+    navigate('/results', {
+      state: {
+        image: imageArray, 
+        captions: captions, 
+        dominantColor: dominantColor, 
+        invertedColor: invertedColor
+      }
+    })
     
     //update user in localStorage
     if(user && user.statistics){
@@ -152,14 +164,14 @@ const Upload = () => {
           </div>
         </InteractiveCard>
 
-        <div className='flex max-sm:flex-col items-center gap-2'>
+        {/* <div className='flex max-sm:flex-col items-center gap-2'>
           <span className='opacity-75'>Select a mood:</span>
           <div className='flex gap-2 flex-wrap justify-center'>
             <button onClick={()=>setMood("Happy")} className={`h-5 w-fit p-4 border border-slate-700 rounded flex justify-center items-center cursor-pointer ${mood==="Happy" ? 'bg-white dark:bg-black' : null}`} style={{border:`2px solid ${invertedColor}`}}>Happy</button>
             <button onClick={()=>setMood("Sarcastic")} className={`h-5 w-fit p-4 border border-slate-700 rounded flex justify-center items-center cursor-pointer ${mood==="Sarcastic" ? 'bg-white dark:bg-black' : null}`} style={{border:`2px solid ${invertedColor}`}}>Sarcastic</button>
             <button onClick={()=>setMood("Playful")} className={`h-5 w-fit p-4 border border-slate-700 rounded flex justify-center items-center cursor-pointer ${mood==="Playful" ? 'bg-white dark:bg-black' : null}`} style={{border:`2px solid ${invertedColor}`}}>Playful</button>
           </div> 
-        </div>
+        </div> */}
 
         {/* color spill */}
         {imageArray[0] && <div className="absolute -inset-15 blur-3xl opacity-25 -z-10 rounded-lg" style={{backgroundColor:dominantColor||'transparent', transition:'background-color 2s ease'}}> </div> }

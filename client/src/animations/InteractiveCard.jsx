@@ -1,34 +1,5 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import useTheme from '../hooks/useTheme';
-
-// Custom hook to listen for theme changes
-// const useTheme = () => {
-//   const [theme, setTheme] = useState(localStorage.getItem("theme") || "dark");
-
-//   useEffect(() => {
-//     const checkTheme = () => {
-//       const currentTheme = localStorage.getItem("theme") || "dark";
-//       setTheme(currentTheme);
-//     };
-
-//     // Check theme on mount
-//     checkTheme();
-
-//     // Listen for storage changes
-//     window.addEventListener('storage', checkTheme);
-    
-//     // Create a custom event listener for theme changes
-//     const handleThemeChange = () => checkTheme();
-//     window.addEventListener('themeChange', handleThemeChange);
-
-//     return () => {
-//       window.removeEventListener('storage', checkTheme);
-//       window.removeEventListener('themeChange', handleThemeChange);
-//     };
-//   }, []);
-
-//   return theme;
-// };
 
 const InteractiveCard = ({ children, className = '' }) => {
   const wrapperRef = useRef(null);
