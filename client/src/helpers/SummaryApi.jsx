@@ -1,7 +1,7 @@
-const backendDomain = "http://localhost:8080"
+// const backendDomain = "http://localhost:8080"
 // deployed on render
 // const backendDomain = "https://pic-lingo-server.vercel.app"
-// const backendDomain = "https://piclingo-eihw.onrender.com"
+const backendDomain = "https://piclingo-eihw.onrender.com"
 
 const SummaryApi = {
     signUp:{
