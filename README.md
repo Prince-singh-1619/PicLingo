@@ -23,6 +23,26 @@ PicLingo is a full-stack web app that converts images into inspirational quote-b
 
 ---
 
+## 📷 Screenshots
+
+<p align="center">
+  <img src="./client/src/assets/signup.png" alt="signup" width="44%" />
+  <img src="./client/src/assets/Home.png" alt="Home" width="44%" />
+</p>
+<p align="center">
+  <img src="./client/src/assets/upload.png" alt="upload" width="44%" />
+  <img src="./client/src/assets/results.png" alt="results" width="44%" />
+</p>
+<p align="center">
+  <img src="./client/src/assets/liked captions.png" alt="liked captions" width="44%" />
+  <img src="./client/src/assets/user page.png" alt="user page" width="44%" />
+</p>
+<p align="center">
+  <img src="./client/src/assets/contact.png" alt="Contact" width="64%" />
+</p>
+
+---
+
 ## 🚀 Getting Started
 
 ### 📦 Prerequisites

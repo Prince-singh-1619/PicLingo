@@ -12,6 +12,8 @@ const GoogleLogin = () => {
     const [isGoogleSDKReady, setIsGoogleSDKReady] = useState(false);
     const [isButtonRendered, setIsButtonRendered] = useState(false);
 
+    const [loading, setLoading] = useState(false)
+
     useEffect(() => {
         // Function to check if Google SDK is loaded
         const checkGoogleSDK = () => {
@@ -78,6 +80,7 @@ const GoogleLogin = () => {
     };
 
     const handleGoogleResponse = async (response) => {
+        setLoading(true)
         try {
             const idToken = response.credential;
 
@@ -105,6 +108,9 @@ const GoogleLogin = () => {
             console.error("Error in Google login:", error);
             toast.error("An error occurred during Google login. Please try again.");
         }
+        finally{
+            setLoading(false)
+        }
     };
 
     const handleManualGoogleLogin = () => {
@@ -129,6 +135,15 @@ const GoogleLogin = () => {
                     <span>Continue with Google</span>
                 </div>
             )}
+
+            {/* loading animation */}
+            {
+                loading ? (
+                <div className="fixed inset-0 z-50 flex items-center justify-center backdrop-blur-xs ">
+                    <div className="loader"></div> 
+                </div>
+                ) : null
+            }
         </div>
     )
 };
